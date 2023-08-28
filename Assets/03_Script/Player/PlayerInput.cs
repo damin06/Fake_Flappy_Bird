@@ -10,6 +10,11 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
+        EventInvoke();
+    }
+
+    void EventInvoke()
+    {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             OnJump?.Invoke();
