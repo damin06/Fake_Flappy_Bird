@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerJump : MonoBehaviour
 {
     [SerializeField] private float jumpSpeed;
+    [SerializeField] private float rotSpeed;
 
     Rigidbody2D rb;
     PlayerInput input;
@@ -15,6 +16,11 @@ public class PlayerJump : MonoBehaviour
 
         input = GetComponent<PlayerInput>();
         input.OnJump += Jump;
+    }
+
+    private void FixedUpdate()
+    {
+        transform.rotation = Quaternion.Euler(0, 0, rb.velocity.y * rotSpeed + 10f);
     }
 
     void Jump()
