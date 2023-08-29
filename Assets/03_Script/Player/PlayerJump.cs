@@ -20,7 +20,7 @@ public class PlayerJump : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.rotation = Quaternion.Euler(0, 0, rb.velocity.y * rotSpeed + 10f);
+        transform.rotation = Quaternion.Euler(0, 0, rb.velocity.y * rotSpeed + 20f);
     }
 
     void Jump()
