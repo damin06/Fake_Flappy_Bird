@@ -16,4 +16,9 @@ public class PlayEnd : MonoBehaviour
     {
         
     }
+
+    public void EnableUI()
+    {
+
+    }
 }
