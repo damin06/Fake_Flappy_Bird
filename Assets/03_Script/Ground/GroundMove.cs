@@ -19,6 +19,6 @@ public class GroundMove : MonoBehaviour
         rb.velocity = Vector2.left * moveSpeed;
 
         if (transform.position.x <= -moveX)
-            transform.position = new Vector3(moveX, -5, 0);
+            transform.position = new Vector3(moveX, transform.position.y, 0);
     }
 }

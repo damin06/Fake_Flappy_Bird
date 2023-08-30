@@ -17,6 +17,7 @@ public class ScoreManager : MonoBehaviour
 
     public void ScorePlus()
     {
+        PlayerPrefs.SetInt("Score", score);
         score++;
         scoreText.text = score.ToString();
     }
