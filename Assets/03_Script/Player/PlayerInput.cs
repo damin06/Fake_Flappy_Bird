@@ -17,7 +17,7 @@ public class PlayerInput : MonoBehaviour
 
     void EventInvoke()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Fire1"))
         {
             OnJump?.Invoke();
         }

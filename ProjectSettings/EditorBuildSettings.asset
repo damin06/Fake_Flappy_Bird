@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/01_Scenes/Wheesong.unity
+    guid: 22d63402cdaef5942a5c29f2390bf3ab
+  - enabled: 1
+    path: Assets/01_Scenes/InGame.unity
+    guid: fff43d415fc09184196aba40c986ff9b
+  - enabled: 1
+    path: Assets/01_Scenes/End.unity
+    guid: 60fcba3819652334fa52e6bf8ba589c3
   m_configObjects: {}
