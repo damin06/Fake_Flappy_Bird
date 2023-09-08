@@ -2763,6 +2763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnDatas: []
+  spawnTrs: []
   spawnTime: 0
 --- !u!1 &1474720590
 GameObject:

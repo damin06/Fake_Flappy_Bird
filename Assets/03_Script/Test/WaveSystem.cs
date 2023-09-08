@@ -18,8 +18,11 @@ public class SpawnData
 
 public class WaveSystem : MonoBehaviour
 {
+    private static WaveSystem instance;
+    public static WaveSystem Instance { get { return instance; } }
+
     [SerializeField] private List<SpawnData> spawnDatas = new List<SpawnData>();
-    [SerializeField] private Transform[] spawnTrs;
+    [SerializeField] private Transform spawnTrs;
     [SerializeField] private float spawnTime;
 
     [HideInInspector] public int nowWave { get; private set; }
@@ -40,8 +43,8 @@ public class WaveSystem : MonoBehaviour
 
     private void EnemyDataUpgrade()
     {
-        EnemyData[] enemyDatas = Resources.LoadAll<EnemyData>("EnemySO");
-        foreach (EnemyData enemyData in enemyDatas)
+        AgentData[] enemyDatas = Resources.LoadAll<AgentData>("EnemySO");
+        foreach (AgentData enemyData in enemyDatas)
         {
             enemyData.hp *= hpUpgradeGrape;
             enemyData.attack *= attackUpgradeGrape;
@@ -64,8 +67,7 @@ public class WaveSystem : MonoBehaviour
             {
                 waveEnemyCnt++;
 
-                Vector3 spawnPos = spawnTrs[UnityEngine.Random.Range(0, spawnTrs.Length)].position;
-                PoolingManager.instance.Pop(popName, spawnPos);
+                PoolingManager.instance.Pop(popName, spawnTrs.position);
                 yield return new WaitForSeconds(spawnTime);
             }
         }
@@ -86,8 +88,7 @@ public class WaveSystem : MonoBehaviour
 
             int randomIndex = UnityEngine.Random.Range(0, randomEnemy.Count);
             string popName = spawnDatas[nowWave].enemyTuples[randomIndex].obj.name;
-            Vector3 spawnPos = spawnTrs[UnityEngine.Random.Range(0, spawnTrs.Length)].position;
-            PoolingManager.instance.Pop(popName, spawnPos);
+            PoolingManager.instance.Pop(popName, spawnTrs.position);
 
             spawnDatas[nowWave].enemyTuples[randomIndex].cnt--;
             if (spawnDatas[nowWave].enemyTuples[randomIndex].cnt <= 0)
