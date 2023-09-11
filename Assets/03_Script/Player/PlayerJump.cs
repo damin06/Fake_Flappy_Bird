@@ -7,11 +7,13 @@ public class PlayerJump : MonoBehaviour
     [SerializeField] private float jumpSpeed;
     [SerializeField] private float rotSpeed;
 
+    AudioSource audioSource;
     Rigidbody2D rb;
     PlayerInput input;
 
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
 
         input = GetComponent<PlayerInput>();
@@ -25,6 +27,7 @@ public class PlayerJump : MonoBehaviour
 
     void Jump()
     {
+        audioSource.Play();
         rb.velocity = Vector3.zero;
         rb.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
     }

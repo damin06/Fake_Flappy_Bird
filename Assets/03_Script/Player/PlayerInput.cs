@@ -6,9 +6,16 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     public event Action OnJump;
-    public event Action OnDead;
+    public event Action<int> OnDead;
+    private PlayEnd playEnd;
 
     bool isDead;
+
+    private void Start()
+    {
+        playEnd = GetComponent<PlayEnd>();
+        OnDead += playEnd.ChangeScene;
+    }
 
     private void Update()
     {
@@ -28,8 +35,7 @@ public class PlayerInput : MonoBehaviour
         if (!isDead && (obj.transform.tag == "Ground" || obj.transform.tag == "Pipe"))
         {
             isDead = true;
-            OnDead?.Invoke();
-            Time.timeScale = 0;//데드이벤트 잘 넣으면 지울거임
+            OnDead?.Invoke(2);
         }
     }
 }
